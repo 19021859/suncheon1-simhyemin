@@ -84,7 +84,7 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
 .who{width:100%;max-width:1180px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;text-align:left;color:var(--muted);font-size:.95rem;padding-top:28px;border-top:1px solid var(--line)}
 .who .logo{display:block;color:var(--ink);font-size:1.5rem}
 .who b{display:block;color:var(--ink);font-family:var(--serif);font-weight:600;font-size:1.25rem;letter-spacing:.03em}
-.who .next{margin:0;font-size:1.3rem}
+.who .next{margin:0 0 0 auto;font-size:1.3rem}
 
 /* dots */
 .dots{position:fixed;right:clamp(14px,2vw,28px);top:50%;transform:translateY(-50%);z-index:15;display:flex;flex-direction:column;gap:14px}
@@ -113,7 +113,7 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
  .next{margin-top:44px}
  .next i{width:46px;height:46px}
  .who{flex-direction:column;align-items:flex-start}
- .who .next{align-self:flex-start}
+ .who .next{align-self:flex-end}
 }
 </style>
 </head>
@@ -153,7 +153,7 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
 <section class="page rat" id="reasons">
  <div class="inner wrap">
   <h2 class="rv" style="margin-bottom:clamp(24px,5vh,48px)">Rationale</h2>
-  <div class="reason rv"><h3>극장</h3><p>현재 VR 콘서트 상영 중인 극장에서는 휠체어석을 제공하지 않는다.</p></div>
+  <div class="reason rv"><h3>VR 콘서트</h3><p>현재 VR 콘서트 상영 중인 극장에서는 휠체어석을 제공하지 않는다.</p></div>
   <div class="reason rv"><h3>콘서트 현장</h3><p>콘서트 장에 직접 가는 선택지 밖에 없지만, 인파 때문에 두렵다.</p></div>
   <div class="reason rv"><h3>선례</h3><p>장애인 이동을 위한 전담 스태프가 배치되어 이동권이 보장된 사례가 존재한다.</p></div>
  </div>
@@ -207,7 +207,7 @@ addEventListener('popstate',()=>go(location.hash.slice(1)||'home'));
 const atTop=()=>scrollY<=1;
 const atBottom=()=>scrollY+innerHeight>=document.documentElement.scrollHeight-2;
 const scrollable=()=>document.documentElement.scrollHeight>innerHeight+4;
-function step(d){const i=order.indexOf(cur)+d;if(i>=0&&i<order.length)go(order[i]);else if(d>0)go(order[0])}
+function step(d){const i=order.indexOf(cur)+d;if(i>=0&&i<order.length)go(order[i]);else go(order[d>0?0:order.length-1])}
 addEventListener('wheel',e=>{
  if(e.ctrlKey||Math.abs(e.deltaY)<8)return;
  const now=Date.now(),fresh=now-lastWheel>150;lastWheel=now;
