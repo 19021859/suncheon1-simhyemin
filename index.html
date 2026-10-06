@@ -56,6 +56,7 @@ h1{font-family:var(--serif);font-weight:700;font-size:clamp(3.2rem,11.5vw,9.6rem
 h1.sw{display:grid}
 .lead{margin-top:clamp(22px,4vh,40px);max-width:28em;font-family:var(--serif);font-weight:400;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.7;text-shadow:0 1px 20px rgba(0,0,0,.75)}
 .btn{margin-top:clamp(26px,4.5vh,44px);padding:15px 34px;border:1px solid rgba(246,239,233,.7);border-radius:999px;font-size:.95rem;font-weight:500;letter-spacing:.04em;background:rgba(13,10,13,.25);display:inline-grid;justify-items:center;align-self:flex-start;transition:background .35s,color .35s,border-color .35s}
+.scroll{position:absolute;right:var(--pad);bottom:0;width:1px;height:clamp(50px,9vh,90px);background:linear-gradient(var(--ink),transparent);opacity:.6}
 .btn:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 
 /* plan */
@@ -108,6 +109,7 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
  .grid h2{margin-bottom:2px}
  .reason{gap:6px}
  .btn{width:100%}
+ .scroll{display:none}
  .next{margin-top:44px}
  .next i{width:46px;height:46px}
  .who{flex-direction:column;align-items:flex-start}
@@ -130,10 +132,11 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
 </div>
 
 <main>
-<header class="page hero" id="home">
+<header class="page hero" id="home" style="position:relative">
  <h1 class="sw anim" aria-label="Barrier-Free Concert"><span class="en">Barrier-Free Concert</span><span class="ko" aria-hidden="true">배리어프리 콘서트</span></h1>
  <p class="lead anim" style="animation-delay:.2s">휠체어 이용자의 이동권 보장을 위해 전담 스태프를 배치한다.</p>
  <a class="btn sw anim" style="animation-delay:.4s" href="#plan" aria-label="기획 보기"><span class="en">View Plan</span><span class="ko" aria-hidden="true">기획 보기</span></a>
+<div class="scroll" aria-hidden="true"></div>
 </header>
 
 <section class="page plan" id="plan">
@@ -176,7 +179,7 @@ const order=['home','plan','reasons','about'];
 const labels={home:'Barrier-Free Concert',plan:'Plan',reasons:'Rationale',about:'Author'};
 const nav=document.getElementById('nav');
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-let cur=null,busy=false;
+let cur=null,busy=false,lockUntil=0,lastWheel=0,ty=0,tyTop=false,tyBot=false;
 addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>40),{passive:true});
 
 function show(id){
@@ -190,7 +193,7 @@ function show(id){
 }
 function go(id){
  if(id===cur||!order.includes(id))return;
- cur=id;
+ cur=id;lockUntil=Date.now()+900;
  try{if(location.hash!=='#'+id)history.pushState(null,'','#'+id)}catch(e){}
  show(id);
 }
@@ -199,6 +202,32 @@ document.addEventListener('click',e=>{
  e.preventDefault();go(a.getAttribute('href').slice(1));
 });
 addEventListener('popstate',()=>go(location.hash.slice(1)||'home'));
+
+/* scroll / swipe / key navigation between pages */
+const atTop=()=>scrollY<=1;
+const atBottom=()=>scrollY+innerHeight>=document.documentElement.scrollHeight-2;
+const scrollable=()=>document.documentElement.scrollHeight>innerHeight+4;
+function step(d){const i=order.indexOf(cur)+d;if(i>=0&&i<order.length)go(order[i]);else if(d>0)go(order[0])}
+addEventListener('wheel',e=>{
+ if(e.ctrlKey||Math.abs(e.deltaY)<8)return;
+ const now=Date.now(),fresh=now-lastWheel>150;lastWheel=now;
+ if(now<lockUntil){lockUntil=Math.max(lockUntil,now+200);return}
+ if(!fresh&&scrollable())return;
+ if(e.deltaY>0&&atBottom())step(1);
+ else if(e.deltaY<0&&atTop())step(-1);
+},{passive:true});
+addEventListener('touchstart',e=>{ty=e.touches[0].clientY;tyTop=atTop();tyBot=atBottom()},{passive:true});
+addEventListener('touchend',e=>{
+ if(Date.now()<lockUntil)return;
+ const dy=e.changedTouches[0].clientY-ty;
+ if(dy<-70&&tyBot)step(1);
+ else if(dy>70&&tyTop)step(-1);
+},{passive:true});
+addEventListener('keydown',e=>{
+ if(Date.now()<lockUntil)return;
+ if((e.key==='ArrowDown'||e.key==='PageDown')&&atBottom())step(1);
+ else if((e.key==='ArrowUp'||e.key==='PageUp')&&atTop())step(-1);
+});
 cur=order.includes(location.hash.slice(1))?location.hash.slice(1):'home';
 show(cur);
 </script>
