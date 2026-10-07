@@ -73,6 +73,7 @@ h1.sw{display:grid}
 .reason:last-child{border-bottom:1px solid var(--line)}
 .reason h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.2rem,2vw,1.5rem);line-height:1.4}
 .reason p{font-size:clamp(1.05rem,1.9vw,1.28rem);line-height:1.85;max-width:29em}
+@media (min-width:1100px){#plan .reason{grid-template-columns:140px 1fr}#plan .reason p{max-width:none;white-space:nowrap;font-size:min(1rem,1.2vw)}}
 
 /* about */
 .about{align-items:center;text-align:center;padding-bottom:clamp(32px,6vh,56px);
@@ -148,12 +149,12 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
 </head>
 <body>
 <nav id="nav">
- <a class="logo sw" href="#home" aria-label="기획안 v1"><span class="en">Proposal v1</span><span class="ko" aria-hidden="true">기획안 v1</span></a>
+ <a class="logo sw" href="#home" aria-label="기획안 v1"><span class="en">Project Proposal v1</span><span class="ko" aria-hidden="true">기획안 v1</span></a>
  <ul>
   <li><a class="sw" data-p="plan" href="#plan" aria-label="기획"><span class="en">Plan</span><span class="ko" aria-hidden="true">기획</span></a></li>
   <li><a class="sw" data-p="flow" href="#flow" aria-label="흐름"><span class="en">Flow</span><span class="ko" aria-hidden="true">흐름</span></a></li>
   <li><a class="sw" data-p="reasons" href="#reasons" aria-label="근거"><span class="en">Rationale</span><span class="ko" aria-hidden="true">근거</span></a></li>
-  <li><a class="sw" data-p="changes" href="#changes" aria-label="변경"><span class="en">v0→v1</span><span class="ko" aria-hidden="true">변경</span></a></li>
+  <li><a class="sw" data-p="changes" href="#changes" aria-label="기획안"><span class="en">v0→v1</span><span class="ko" aria-hidden="true">기획안</span></a></li>
   <li><a class="sw" data-p="about" href="#about" aria-label="작성자"><span class="en">Author</span><span class="ko" aria-hidden="true">작성자</span></a></li>
  </ul>
 </nav>
@@ -175,12 +176,12 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
   <div class="grid">
    <h2 class="rv">Plan</h2>
    <div class="rv">
-    <p class="statement">휠체어 이용자의 이동권 보장을 위해 전담 스태프를 배치한다.</p>
+    <p class="statement">휠체어 이용자의 이동권 보장을 위해 전담 스태프를 배치한다</p>
    </div>
   </div>
   <div style="margin-top:clamp(36px,7vh,64px)">
-   <div class="reason rv"><h3>Persona</h3><p>40대 초반 직장인, 서울 거주, 3년 전 사고로 복합장애를 얻어 수동휠체어를 사용, 한 아이돌 20년차 팬, 공식 팬클럽 가입, 음반/굿즈 수집, 장애를 얻기 전에는 콘서트, 팬미팅, 생일파티, 생일카페, 공개 방송과 같은 오프라인 스케줄에 자주 참여함. 장애인이 된 후로 오프라인 활동은 못하고 주말마다 스마트폰을 통해 공식 팬 커뮤니티, 네이버 카페로 소식을 얻고 팬활동을 함.</p></div>
-   <div class="reason rv"><h3>Pain Point</h3><p>이동권 문제: 콘서트장 주변에 인파가 몰려 수동 휠체어를 타고 이동하기 어려울까봐 두렵다. (감정)</p></div>
+   <div class="reason rv"><h3>Persona</h3><p>40대 초반 직장인, 서울 거주, 3년 전 사고로 복합장애를 얻어 수동휠체어를 사용<br>한 아이돌 20년차 팬, 공식 팬클럽 가입, 음반/굿즈 수집<br>장애를 얻기 전에는 콘서트, 팬미팅, 생일파티, 생일카페, 공개 방송과 같은 오프라인 스케줄에 자주 참여함<br>장애인이 된 후로 오프라인 활동은 못하고 주말마다 스마트폰을 통해 공식 팬 커뮤니티, 네이버 카페로 소식을 얻고 팬활동을 함</p></div>
+   <div class="reason rv"><h3>Pain Point</h3><p>이동권 문제(감정)<br>콘서트장 주변에 인파가 몰려 수동 휠체어를 타고 이동하기 어려울까봐 두렵다</p></div>
   </div>
  </div>
  <a class="next rv" href="#flow"><span class="sw" aria-label="흐름"><span class="en">Flow</span><span class="ko" aria-hidden="true">흐름</span></span><i><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></i></a>
@@ -207,14 +208,14 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
 <section class="page plan" id="reasons">
  <div class="inner wrap">
   <h2 class="rv" style="margin-bottom:clamp(24px,5vh,48px)">Rationale</h2>
-  <div class="reason rv"><h3>VR 콘서트</h3><p>상영 중인 VR 콘서트를 찾아보니 휠체어석을 지원하지 않고 있어 VR 콘서트 감상 자체가 불가능하다.
-   <small>엔하이픈 브이알콘서트 : 데스티니 — 롯데시네마 월드타워 10관(2026년 11월 1일까지 상영): 전 좌석 소파석으로 휠체어석 자체가 없음. 롯데시네마 홍대입구 4관(2026년 11월 8일까지 상영): 장애인석은 있으나 예매 활성화 안되어 있음.<br>출처: 작성자가 롯데시네마 홈페이지에서 직접 확인, 2026년 10월 7일 기준</small></p></div>
-  <div class="reason rv"><h3>콘서트 현장</h3><p>현재 VR 콘서트 상영 중인 극장에서 휠체어석을 제공하고 있지 않아 콘서트장에 직접 가는 선택지 밖에 없음.
-   <small>근거: 페르소나와 유사한 사례 · 휠체어석 이용 불편 후기 (<a href="https://cafe.naver.com/2chanwon?iframe_url_utf8=%2Fca-fe%2Fcafes%2F30157652%2Farticles%2F1236312%253Fart%3DZXh0ZXJuYWwtc2VydmljZS1uYXZlci1zZWFyY2gtY2FmZS1wcg.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjYWZlVHlwZSI6IkNBRkVfVVJMIiwiY2FmZVVybCI6IjJjaGFud29uIiwi" target="_blank" rel="noopener">네이버 카페 글</a>)</small></p></div>
-  <div class="reason rv"><h3>선례</h3><p>장애인 이동을 위한 전담 스태프가 배치된 사례가 존재.
+  <div class="reason rv"><h3>VR 콘서트</h3><p>상영 중인 VR 콘서트를 찾아보니 휠체어석을 지원하지 않고 있어<br>VR 콘서트 감상 자체가 불가능하다
+   <small>엔하이픈 브이알콘서트 : 데스티니<br>롯데시네마 월드타워 10관(2026년 11월 1일까지 상영): 전 좌석 소파석으로 휠체어석 자체가 없음<br>롯데시네마 홍대입구 4관(2026년 11월 8일까지 상영): 장애인석은 있으나 예매 활성화 안되어 있음<br>출처: 작성자가 롯데시네마 홈페이지에서 직접 확인, 2026년 10월 7일 기준</small></p></div>
+  <div class="reason rv"><h3>콘서트 현장</h3><p>현재 VR 콘서트 상영 중인 극장에서 휠체어석을 제공하고 있지 않아 콘서트장에 직접 가는 선택지 밖에 없음
+   </p></div>
+  <div class="reason rv"><h3>선례</h3><p>장애인 이동을 위한 전담 스태프가 배치된 사례가 존재
    <small>출처: <a href="https://www.donga.com/news/Society/article/all/20260907/134619194/1" target="_blank" rel="noopener">동아일보 기사</a> (게재일 2026년 9월 7일 — 기사 주소로 추론)</small></p></div>
  </div>
- <a class="next rv" href="#changes"><span class="sw" aria-label="변경"><span class="en">v0 → v1</span><span class="ko" aria-hidden="true">변경</span></span><i><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></i></a>
+ <a class="next rv" href="#changes"><span class="sw" aria-label="기획안"><span class="en">v0 → v1</span><span class="ko" aria-hidden="true">기획안</span></span><i><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></i></a>
 </section>
 
 <section class="page rat" id="changes">
@@ -222,15 +223,11 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
   <h2 class="rv" style="margin-bottom:clamp(24px,5vh,48px)">v0 → v1</h2>
   <div class="cmp head"><span>칸</span><span>v0</span><span>v1</span><span>왜 바꿨나</span></div>
   <div class="cmp rv"><h3>① 페르소나</h3><p class="v0"><i>v0</i>40대 초반 직장인, 수동휠체어 사용, 한 아이돌 20년차 팬</p><p class="v1"><i>v1</i>그대로</p><p class="why"><i>왜 바꿨나</i>페르소나가 구체적이라 생각</p></div>
-  <div class="cmp rv"><h3>② Pain Point</h3><p class="v0"><i>v0</i>이동권 문제 + 휠체어석은 무대쪽으로 고정되어 있어 아티스트가 이동하면 볼 수 없고, 다른 팬들이 일어서서 보게 되면 관람에 방해 받는다.</p><p class="v1"><i>v1</i>이동권 문제: 콘서트장 주변에 인파가 몰려 수동 휠체어를 타고 이동하기 어려울까봐 두렵다. (감정)</p><p class="why"><i>왜 바꿨나</i>페르소나가 직접 네이버 카페에 남긴 글을 근거로 pain point를 하나만 남김 (빈도X심각도를 기준으로 삼음)</p></div>
+  <div class="cmp rv"><h3>② Pain Point</h3><p class="v0"><i>v0</i>이동권 문제 + 휠체어석은 무대쪽으로 고정되어 있어 아티스트가 이동하면 볼 수 없고, 다른 팬들이 일어서서 보게 되면 관람에 방해 받는다.</p><p class="v1"><i>v1</i>이동권 문제(감정)<br>콘서트장 주변에 인파가 몰려 수동 휠체어를 타고 이동하기 어려울까봐 두렵다</p><p class="why"><i>왜 바꿨나</i>페르소나가 직접 네이버 카페에 남긴 글을 근거로 pain point를 하나만 남김 (빈도X심각도를 기준으로 삼음)</p></div>
   <div class="cmp rv"><h3>③ 핵심 아이디어</h3><p class="v0"><i>v0</i>이동권 문제와 휠체어 관람 제한 문제를 영화관 VR 상영으로 해결 한다.</p><p class="v1"><i>v1</i>휠체어 이용자의 이동권 보장을 위해 전담 스태프를 배치한다.</p><p class="why"><i>왜 바꿨나</i>VR 콘서트 상영 극장에서 휠체어석을 제공하지 않아 콘서트장에 직접 가는 선택지 밖에 없음, 전담 스태프 배치 사례가 존재.</p></div>
   <div class="cmp rv"><h3>④ 왜 이머시브인가</h3><p class="v0"><i>v0</i>극장은 콘서트장보다 사람이 덜 몰려 이동권 문제에 대한 두려움이 덜 할것이라 예상, 휠체어석 고정으로 인한 관람 제한 문제도 해결 가능함.</p><p class="v1"><i>v1</i>상영 중인 VR 콘서트를 찾아보니 휠체어석을 지원하지 않고 있어 VR 콘서트 감상 자체가 불가능하다.</p><p class="why"><i>왜 바꿨나</i>이머시브 콘텐츠를 할 근거가 없어서 이 기획안에서 이머시브 콘텐츠는 폐기함</p></div>
   <div class="cmp rv"><h3>⑤ 경험 흐름</h3><p class="v0"><i>v0</i>서울 VR 상영관 예매 → 입장 전 굿즈 구매 → 현장 입장, 동시 상영, 단체 응원</p><p class="v1"><i>v1</i>휠체어석 예매 시 전담 스태프 배치 → 입장 전 접견·굿즈 구매 → 입장, 관람, 퇴장까지 도움</p><p class="why"><i>왜 바꿨나</i>핵심 아이디어 변경(VR 상영 → 전담 스태프)에 맞춤</p></div>
   <div class="cmp rv"><h3>⑥ 매출 · 운영</h3><p class="v0"><i>v0</i>티켓, 콘서트 굿즈</p><p class="v1"><i>v1</i>현장 콘서트 티켓, 콘서트 굿즈</p><p class="why"><i>왜 바꿨나</i>핵심 아이디어 변경(VR 상영 → 전담 스태프)에 맞춤</p></div>
-  <div class="sum rv">
-   <div><b>①</b><span>안 바꾼 칸 — 페르소나가 구체적이라 생각해서 바꾸지 않음</span></div>
-   <div><b>4 → 1</b><span>남은 «?» 개수 — 세 개가 줄어듦 (남은 칸: ⑥)</span></div>
-  </div>
  </div>
  <a class="next rv" href="#about"><span class="sw" aria-label="작성자"><span class="en">Author</span><span class="ko" aria-hidden="true">작성자</span></span><i><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></i></a>
 </section>
@@ -242,10 +239,10 @@ background:linear-gradient(180deg,var(--bg) 0%,rgba(13,10,13,.15) 22%,rgba(13,10
   <span class="rv">Barrier-Free Concert</span>
  </div>
  <div class="who rv">
-  <div><span class="logo">Project Proposal v1</span>Author<b>기쁨</b></div>
-  <a class="next" href="#home"><span class="sw" aria-label="처음으로"><span class="en">Home</span><span class="ko" aria-hidden="true">처음으로</span></span><i><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></i></a>
+  <div><span class="logo">Project Proposal v1</span>Author<b>심혜민</b></div>
  </div>
  <p class="cap rv">AI 사용 표기 — 사용 AI: Claude (Anthropic, Claude Code) · 사용 의도: 엑셀 기획안 v1(project-proposal-v1.xlsx) 내용을 참고.html의 디자인으로 웹페이지 변환 · 내가 수정한 부분: (작성 예정)</p>
+ <a class="next rv" href="#home"><span class="sw" aria-label="처음으로"><span class="en">Home</span><span class="ko" aria-hidden="true">처음으로</span></span><i><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></i></a>
 </section>
 </main>
 
